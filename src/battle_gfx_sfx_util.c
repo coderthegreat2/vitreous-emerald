@@ -1226,10 +1226,6 @@ void SetBattlerShadowSpriteCallback(u8 battlerId, u16 species)
     if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
         return;
 
-    // If a Pokémon was caught, a shadow shouldn't be casted.
-    if (gBattleScripting.monCaught)
-        return;
-
     if (gBattleSpritesDataPtr->battlerData[battlerId].transformSpecies != SPECIES_NONE)
         species = gBattleSpritesDataPtr->battlerData[battlerId].transformSpecies;
 
