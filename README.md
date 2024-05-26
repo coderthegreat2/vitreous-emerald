@@ -13,9 +13,6 @@ It contains the following new features
 - increased bag size
 - custom ui for almost everything
 
-todo:
-- make nature mints obtainable
-
 It builds the following ROM:
 
 * [**pokeemerald.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1961) `sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7`
