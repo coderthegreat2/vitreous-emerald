@@ -156,6 +156,7 @@ static void Task_HandleShopMenuSell(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
 
+//mart badges
 static const u16 sShopInventory_ZeroBadges[] = {
     ITEM_POKE_BALL,
     ITEM_POTION,
@@ -326,6 +327,7 @@ static const u16 *const sShopInventories[] =
     sShopInventory_SevenBadges,
     sShopInventory_EightBadges
 };
+
 
 static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
 {
@@ -566,11 +568,12 @@ static void SetShopItemsForSale(const u16 *items)
     u8 badgeCount = GetNumberOfBadges();
 
     if (items == NULL)
-        sMartInfo.itemList = sShopInventories[badgeCount];
+        gMartInfo.itemList = sShopInventories[badgeCount];
     else
-        sMartInfo.itemList = items;
+        gMartInfo.itemList = items;
 
-    sMartInfo.itemCount = 0;
+    gMartInfo.itemCount = 0;
+    // Read items until ITEM_NONE / DECOR_NONE is reached
     while (sMartInfo.itemList[i])
     {
         sMartInfo.itemCount++;
@@ -1456,3 +1459,5 @@ void CreateDecorationShop2Menu(const u16 *itemsForSale)
     SetShopItemsForSale(itemsForSale);
     SetShopMenuCallback(ScriptContext_Enable);
 }
+
+
