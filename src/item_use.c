@@ -36,6 +36,7 @@
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
+#include "tm_case.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
 #include "constants/item_effects.h"
@@ -191,6 +192,27 @@ void ItemUseOutOfBattle_Mail(u8 taskId)
 {
     gBagMenu->newScreenCallback = CB2_CheckMail;
     Task_FadeAndCloseBagMenu(taskId);
+}
+
+void ItemUseOutOfBattle_ExpShare(u8 taskId)
+{
+    if (!gSaveBlock2Ptr->expShare)
+    {
+        PlaySE(SE_EXP_MAX);
+        if (gTasks[taskId].tUsingRegisteredKeyItem) // to account for pressing select in the overworld
+            DisplayItemMessageOnField(taskId, gText_ExpShareOn, Task_CloseCantUseKeyItemMessage);
+        else
+            DisplayItemMessage(taskId, 1, gText_ExpShareOn, CloseItemMessage);
+    }
+    else
+    {
+        PlaySE(SE_PC_OFF);
+        if (gTasks[taskId].tUsingRegisteredKeyItem) // to account for pressing select in the overworld
+            DisplayItemMessageOnField(taskId, gText_ExpShareOff, Task_CloseCantUseKeyItemMessage);
+        else
+            DisplayItemMessage(taskId, 1, gText_ExpShareOff, CloseItemMessage);
+    }
+    gSaveBlock2Ptr->expShare = !gSaveBlock2Ptr->expShare;
 }
 
 void ItemUseOutOfBattle_Bike(u8 taskId)
@@ -812,6 +834,42 @@ static void UseTMHM(u8 taskId)
 {
     gItemUseCB = ItemUseCB_TMHM;
     SetUpItemUseCallback(taskId);
+}
+
+
+static void CB2_OpenTMCaseOnField(void)
+{
+    InitTMCase(0, CB2_BagMenuFromStartMenu, 0);
+}
+
+static void Task_InitTMCaseFromField(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        // sub_80A1184();
+        InitTMCase(0, CB2_ReturnToField, 1);
+        DestroyTask(taskId);
+    }
+}
+
+void ItemUseOutOfBattle_TmCase(u8 taskId)
+{
+    if (MenuHelpers_IsLinkActive() == TRUE) // link func
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+    else if (gTasks[taskId].tUsingRegisteredKeyItem != TRUE)
+    {
+        gBagMenu->newScreenCallback = CB2_OpenTMCaseOnField;
+        Task_FadeAndCloseBagMenu(taskId);
+    }
+    else
+    {
+        gFieldCallback = FieldCB_ReturnToFieldNoScript; //FieldCB_ReturnToFieldNoScript
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_InitTMCaseFromField;
+    }
 }
 
 static void RemoveUsedItem(void)

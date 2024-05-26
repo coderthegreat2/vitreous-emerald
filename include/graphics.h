@@ -3793,6 +3793,7 @@ extern const u32 gItemIconPalette_GroundTMHM[];
 extern const u32 gItemIconPalette_GhostTMHM[];
 extern const u32 gItemIconPalette_RockTMHM[];
 extern const u32 gItemIconPalette_FlyingTMHM[];
+extern const u32 gItemIconPalette_FairyTMHM[];
 extern const u32 gItemIcon_HM[];
 // FireRed/LeafGreen key items
 extern const u32 gItemIcon_OaksParcel[];
@@ -4102,6 +4103,7 @@ extern const u16 gBattleInterface_BallDisplayPal[];
 
 extern const u32 gSwapLineGfx[];
 extern const u32 gSwapLinePal[];
+extern const u32 gSwapLineGfx_RegisteredItemsMenu[];
 
 extern const u32 gBattlePyramidBag_Gfx[];
 extern const u32 gBattlePyramidBag_Pal[];
@@ -5069,5 +5071,17 @@ extern const u8 gMailTilemap_Retro[];
 
 extern const u8 gMonMarkingsMenu_Gfx[];
 extern const u16 gMonMarkingsMenu_Pal[];
+
+// frlg_tm_case_port
+extern const u32 gUnknown_8E845D8[];
+extern const u32 gUnknown_8E84A24[];
+extern const u32 gUnknown_8E84B70[];
+extern const u32 gUnknown_8E84CB0[];
+extern const u32 gUnknown_8E84D20[];
+extern const u32 gTMCase_TMSpriteGfx[];
+extern const u32 gUnknown_8E84F20[];
+extern const u32 gUnknown_8E85068[];
+extern const u8 gUnknown_8E99118[];
+extern const u16 gTMCaseMainWindowPalette[];
 
 #endif //GUARD_GRAPHICS_H

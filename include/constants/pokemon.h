@@ -21,7 +21,8 @@
 #define TYPE_ICE              15
 #define TYPE_DRAGON           16
 #define TYPE_DARK             17
-#define NUMBER_OF_MON_TYPES   18
+#define TYPE_FAIRY            18
+#define NUMBER_OF_MON_TYPES   19
 
 // Pokémon egg groups
 #define EGG_GROUP_NONE                0
@@ -276,5 +277,12 @@
 #define BATTLE_ALIVE_DEF_SIDE       2
 
 #define SKIP_FRONT_ANIM (1 << 7)
+
+#define NUM_ABILITY_SLOTS (NUM_NORMAL_ABILITY_SLOTS + NUM_HIDDEN_ABILITY_SLOTS)
+#define NUM_NORMAL_ABILITY_SLOTS 2
+#define NUM_HIDDEN_ABILITY_SLOTS 1
+
+// Used as a signal for givemon to generate a default ability by personality.
+#define NUM_ABILITY_PERSONALITY 0xFF
 
 #endif // GUARD_CONSTANTS_POKEMON_H

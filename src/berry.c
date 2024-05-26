@@ -91,6 +91,8 @@ static const u8 sBerryDescriptionPart1_Pamtre[] = _("Drifts on the sea from some
 static const u8 sBerryDescriptionPart2_Pamtre[] = _("It is thought to grow elsewhere.");
 static const u8 sBerryDescriptionPart1_Watmel[] = _("A huge BERRY, with some over 20");
 static const u8 sBerryDescriptionPart2_Watmel[] = _("inches discovered. Exceedingly sweet.");
+const u8 sBerryDescriptionPart1_WatmelMetric[] = _("A huge Berry, with some over half a");
+const u8 sBerryDescriptionPart2_WatmelMetric[] = _("meter discovered. Exceedingly sweet.");
 static const u8 sBerryDescriptionPart1_Durin[] = _("Bitter to even look at. It is so");
 static const u8 sBerryDescriptionPart2_Durin[] = _("bitter, no one has ever eaten it as is.");
 static const u8 sBerryDescriptionPart1_Belue[] = _("It is glossy and looks delicious, but");
@@ -1288,6 +1290,8 @@ void ObjectEventInteractionGetBerryCountString(void)
     u8 treeId = GetObjectEventBerryTreeId(gSelectedObjectEvent);
     u8 berry = GetBerryTypeByBerryTreeId(treeId);
     u8 count = GetBerryCountByBerryTreeId(treeId);
+    
+    gSpecialVar_0x8006 = BerryTypeToItemId(berry);
     GetBerryCountStringByBerryType(berry, gStringVar1, count);
 }
 

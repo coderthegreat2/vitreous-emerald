@@ -147,6 +147,9 @@
 #define CAT(a, b) CAT_(a, b)
 #define CAT_(a, b) a ## b
 
+//tx_registered_items_menu
+#define REGISTERED_ITEMS_MAX 10
+
 // This produces an error at compile-time if expr is zero.
 // It looks like file.c:line: size of array `id' is negative
 #define STATIC_ASSERT(expr, id) typedef char id[(expr) ? 1 : -1];
@@ -497,6 +500,9 @@ struct RankingHall2P
     //u8 padding;
 };
 
+#include "constants/items.h"
+#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
+
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -514,8 +520,12 @@ struct SaveBlock2
              u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
-             //u16 padding1:4;
-             //u16 padding2;
+             u16 optionsUnitSystem:1;   //tx_optionsPlus
+             u16 optionsHpBarSpeed:4;   //tx_optionsPlus
+             u16 optionsExpBarSpeed:4;  //tx_optionsPlus
+             u16 optionsDisableMatchCall:1; //tx_optionsPlus
+             u16 optionsCurrentFont:1;  //tx_optionsPlus
+             u16 expShare:1;
     /*0x18*/ struct Pokedex pokedex;
     /*0x90*/ u8 filler_90[0x8];
     /*0x98*/ struct Time localTimeOffset;
@@ -531,6 +541,7 @@ struct SaveBlock2
     /*0x57C*/ struct RankingHall2P hallRecords2P[FRONTIER_LVL_MODE_COUNT][HALL_RECORDS_COUNT]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
+    /*0xF2C*/ u8 itemFlags[ITEM_FLAGS_COUNT];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -583,6 +594,11 @@ struct ItemSlot
 {
     u16 itemId;
     u16 quantity;
+};
+
+struct RegisteredItemSlot
+{
+    u16 itemId;
 };
 
 struct Pokeblock
@@ -993,7 +1009,7 @@ struct SaveBlock1
     /*0x238*/ struct Pokemon playerParty[PARTY_SIZE];
     /*0x490*/ u32 money;
     /*0x494*/ u16 coins;
-    /*0x496*/ u16 registeredItem; // registered for use with SELECT button
+    /*0x496*/ u16 registeredItemSelect; // registered for use with SELECT button
     /*0x498*/ struct ItemSlot pcItems[PC_ITEMS_COUNT];
     /*0x560*/ struct ItemSlot bagPocket_Items[BAG_ITEMS_COUNT];
     /*0x5D8*/ struct ItemSlot bagPocket_KeyItems[BAG_KEYITEMS_COUNT];
@@ -1056,7 +1072,7 @@ struct SaveBlock1
     /*0x31DC*/ struct Roamer roamer;
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
     /*0x322C*/ struct MysteryGiftSave mysteryGift;
-    /*0x3598*/ u8 unused_3598[0x180];
+    /*0x3598*/ u8 unused_3598[0x18];
     /*0x3718*/ u32 trainerHillTimes[NUM_TRAINER_HILL_MODES];
     /*0x3728*/ struct RamScript ramScript;
     /*0x3B14*/ struct RecordMixingGift recordMixingGift;
@@ -1068,6 +1084,9 @@ struct SaveBlock1
     /*0x3D64*/ struct TrainerHillSave trainerHill;
     /*0x3D70*/ struct WaldaPhrase waldaPhrase;
     // sizeof: 0x3D88
+                u8 registeredItemLastSelected:4; //max 16 items
+                u8 registeredItemListCount:4;
+                struct RegisteredItemSlot registeredItems[REGISTERED_ITEMS_MAX];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

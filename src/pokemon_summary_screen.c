@@ -690,16 +690,16 @@ static const u8 sTextColors[][3] =
     {0, 1, 2},
     {0, 3, 4},
     {0, 5, 6},
-    {0, 7, 8},
+    {0, 8, 7},
     {0, 9, 10},
     {0, 11, 12},
     {0, 13, 14},
-    {0, 7, 8},
+    {0, 8, 7},
     {13, 15, 14},
     {0, 1, 2},
     {0, 3, 4},
     {0, 5, 6},
-    {0, 7, 8}
+    {0, 8, 7},
 };
 
 static const u8 sButtons_Gfx[][4 * TILE_SIZE_4BPP] = {
@@ -822,6 +822,10 @@ static const union AnimCmd sSpriteAnim_TypeDark[] = {
     ANIMCMD_FRAME(TYPE_DARK * 8, 0, FALSE, FALSE),
     ANIMCMD_END
 };
+static const union AnimCmd sSpriteAnim_TypeFairy[] = {
+    ANIMCMD_FRAME(TYPE_FAIRY * 8, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
 static const union AnimCmd sSpriteAnim_CategoryCool[] = {
     ANIMCMD_FRAME((CONTEST_CATEGORY_COOL + NUMBER_OF_MON_TYPES) * 8, 0, FALSE, FALSE),
     ANIMCMD_END
@@ -861,6 +865,7 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_TypeIce,
     sSpriteAnim_TypeDragon,
     sSpriteAnim_TypeDark,
+    sSpriteAnim_TypeFairy,
     sSpriteAnim_CategoryCool,
     sSpriteAnim_CategoryBeauty,
     sSpriteAnim_CategoryCute,
@@ -904,6 +909,7 @@ static const u8 sMoveTypeToOamPaletteNum[NUMBER_OF_MON_TYPES + CONTEST_CATEGORIE
     [TYPE_ICE] = 14,
     [TYPE_DRAGON] = 15,
     [TYPE_DARK] = 13,
+    [TYPE_FAIRY] = 14,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_COOL] = 13,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_BEAUTY] = 14,
     [NUMBER_OF_MON_TYPES + CONTEST_CATEGORY_CUTE] = 14,
@@ -1747,7 +1753,7 @@ static void ChangePage(u8 taskId, s8 delta)
         return;
     else if (delta == -1 && sMonSummaryScreen->currPageIndex == sMonSummaryScreen->minPageIndex)
         return;
-    else if (delta == 1 && sMonSummaryScreen->currPageIndex == sMonSummaryScreen->maxPageIndex)
+    else if (delta == 1 && sMonSummaryScreen->currPageIndex == (sMonSummaryScreen->maxPageIndex - 1))
         return;
 
     PlaySE(SE_SELECT);
@@ -4019,23 +4025,23 @@ static void StopPokemonAnimations(void)  // A subtle effect, this function stops
 
 static void CreateMonMarkingsSprite(struct Pokemon *mon)
 {
-    struct Sprite *sprite = CreateMonMarkingAllCombosSprite(TAG_MON_MARKINGS, TAG_MON_MARKINGS, sMarkings_Pal);
-
-    sMonSummaryScreen->markingsSprite = sprite;
-    if (sprite != NULL)
-    {
-        StartSpriteAnim(sprite, GetMonData(mon, MON_DATA_MARKINGS));
-        sMonSummaryScreen->markingsSprite->x = 60;
-        sMonSummaryScreen->markingsSprite->y = 26;
-        sMonSummaryScreen->markingsSprite->oam.priority = 1;
-    }
+    //struct Sprite *sprite = CreateMonMarkingAllCombosSprite(TAG_MON_MARKINGS, TAG_MON_MARKINGS, sMarkings_Pal);
+//
+    //sMonSummaryScreen->markingsSprite = sprite;
+    //if (sprite != NULL)
+    //{
+    //    StartSpriteAnim(sprite, GetMonData(mon, MON_DATA_MARKINGS));
+    //    sMonSummaryScreen->markingsSprite->x = 60;
+    //    sMonSummaryScreen->markingsSprite->y = 26;
+    //    sMonSummaryScreen->markingsSprite->oam.priority = 1;
+    //}
 }
 
 static void RemoveAndCreateMonMarkingsSprite(struct Pokemon *mon)
 {
-    DestroySprite(sMonSummaryScreen->markingsSprite);
+    //DestroySprite(sMonSummaryScreen->markingsSprite);
     FreeSpriteTilesByTag(TAG_MON_MARKINGS);
-    CreateMonMarkingsSprite(mon);
+    //CreateMonMarkingsSprite(mon);
 }
 
 static void CreateCaughtBallSprite(struct Pokemon *mon)

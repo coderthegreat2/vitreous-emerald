@@ -78,7 +78,8 @@ static const u8 sTextSpeedFrameDelays[] =
 {
     [OPTIONS_TEXT_SPEED_SLOW] = 8,
     [OPTIONS_TEXT_SPEED_MID]  = 4,
-    [OPTIONS_TEXT_SPEED_FAST] = 1
+    [OPTIONS_TEXT_SPEED_FAST] = 1,
+    [OPTIONS_TEXT_SPEED_FASTER] = 1
 };
 
 static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
@@ -131,6 +132,7 @@ static const struct MenuInfoIcon sMenuInfoIcons[] =
     [TYPE_ICE + 1]      = { 32, 12, 0x4C },
     [TYPE_DRAGON + 1]   = { 32, 12, 0xA0 },
     [TYPE_DARK + 1]     = { 32, 12, 0x8C },
+    [TYPE_FAIRY + 1]    = { 32, 12, 0x4  },
     [MENU_INFO_ICON_TYPE]      = { 42, 12, 0xA8 },
     [MENU_INFO_ICON_POWER]     = { 42, 12, 0xC0 },
     [MENU_INFO_ICON_ACCURACY]  = { 42, 12, 0xC8 },
@@ -481,8 +483,8 @@ u32 GetPlayerTextSpeed(void)
 u8 GetPlayerTextSpeedDelay(void)
 {
     u32 speed;
-    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FAST)
-        gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
+    if (gSaveBlock2Ptr->optionsTextSpeed > OPTIONS_TEXT_SPEED_FASTER)
+        gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     speed = GetPlayerTextSpeed();
     return sTextSpeedFrameDelays[speed];
 }

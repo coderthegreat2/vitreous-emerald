@@ -1153,7 +1153,7 @@ static void Cmd_accuracycheck(void)
             calc = (calc * 130) / 100; // 1.3 compound eyes boost
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SAND_VEIL && gBattleWeather & B_WEATHER_SANDSTORM)
             calc = (calc * 80) / 100; // 1.2 sand veil loss
-        if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_TYPE_PHYSICAL(type))
+        if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_MOVE_PHYSICAL(move))
             calc = (calc * 80) / 100; // 1.2 hustle loss
 
         if (gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY)
@@ -1931,7 +1931,7 @@ static void Cmd_datahpupdate(void)
                 // Note: While physicalDmg/specialDmg below are only distinguished between for Counter/Mirror Coat, they are
                 //       used in combination as general damage trackers for other purposes. specialDmg is additionally used
                 //       to help determine if a fire move should defrost the target.
-                if (IS_TYPE_PHYSICAL(moveType) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE) && gCurrentMove != MOVE_PAIN_SPLIT)
+                if (IS_MOVE_PHYSICAL(gCurrentMove) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE) && gCurrentMove != MOVE_PAIN_SPLIT)
                 {
                     // Record physical damage/attacker for Counter
                     gProtectStructs[gActiveBattler].physicalDmg = gHpDealt;
@@ -1947,7 +1947,7 @@ static void Cmd_datahpupdate(void)
                         gSpecialStatuses[gActiveBattler].physicalBattlerId = gBattlerTarget;
                     }
                 }
-                else if (!IS_TYPE_PHYSICAL(moveType) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE))
+                else if (IS_MOVE_SPECIAL(gCurrentMove) && !(gHitMarker & HITMARKER_PASSIVE_DAMAGE))
                 {
                     // Record special damage/attacker for Mirror Coat
                     gProtectStructs[gActiveBattler].specialDmg = gHpDealt;
@@ -3244,7 +3244,6 @@ static void Cmd_getexp(void)
     s32 i; // also used as stringId
     u8 holdEffect;
     s32 sentIn;
-    s32 viaExpShare = 0;
     u16 *exp = &gBattleStruct->expValue;
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
@@ -3288,20 +3287,17 @@ static void Cmd_getexp(void)
                     holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
                 else
                     holdEffect = ItemId_GetHoldEffect(item);
-
-                if (holdEffect == HOLD_EFFECT_EXP_SHARE)
-                    viaExpShare++;
             }
 
             calculatedExp = gSpeciesInfo[gBattleMons[gBattlerFainted].species].expYield * gBattleMons[gBattlerFainted].level / 7;
 
-            if (viaExpShare) // at least one mon is getting exp via exp share
+            if (gSaveBlock2Ptr->expShare) // exp share is turned on
             {
                 *exp = SAFE_DIV(calculatedExp / 2, viaSentIn);
                 if (*exp == 0)
                     *exp = 1;
 
-                gExpShareExp = calculatedExp / 2 / viaExpShare;
+                gExpShareExp = calculatedExp / 2;
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
             }
@@ -3328,7 +3324,7 @@ static void Cmd_getexp(void)
             else
                 holdEffect = ItemId_GetHoldEffect(item);
 
-            if (holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->sentInPokes & 1))
+            if (!gSaveBlock2Ptr->expShare && !(gBattleStruct->sentInPokes & 1))
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -3350,14 +3346,14 @@ static void Cmd_getexp(void)
                     gBattleStruct->wildVictorySong++;
                 }
 
-                if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP))
+                if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && !GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_IS_EGG))
                 {
                     if (gBattleStruct->sentInPokes & 1)
                         gBattleMoveDamage = *exp;
                     else
                         gBattleMoveDamage = 0;
 
-                    if (holdEffect == HOLD_EFFECT_EXP_SHARE)
+                    if (gSaveBlock2Ptr->expShare)
                         gBattleMoveDamage += gExpShareExp;
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
