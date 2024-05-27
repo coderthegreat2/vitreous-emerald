@@ -477,3 +477,8 @@ void StartNewPokeballCaseUI(void)
     FadeScreen(FADE_TO_BLACK, 0);
     CreateTask(Task_OpenBirchCase, 0);
 }
+
+void GetObjectEventTrainerRangeFromTemplate(void)
+{
+    gSpecialVar_Result = gMapHeader.events->objectEvents[gSpecialVar_LastTalked - 1].trainerRange_berryTreeId;
+}
