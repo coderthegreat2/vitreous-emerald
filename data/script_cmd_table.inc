@@ -229,6 +229,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_bufferitemnameplural              @ 0xe2
 	.4byte ScrCmd_showitemdesc              			@ 0xe3
 	.4byte ScrCmd_hideitemdesc              			@ 0xe4
+    .4byte ScrCmd_checkpartylearnknowsfieldmove     @ 0xe3 // qol_field_moves
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop
