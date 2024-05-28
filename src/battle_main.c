@@ -1833,7 +1833,9 @@ static void CB2_HandleStartMultiBattle(void)
         {
             u32 *ptr = gBattleStruct->multiBuffer.battleVideo;
             ptr[0] = gBattleTypeFlags;
-            ptr[1] = gRecordedBattleRngSeed; // UB: overwrites berry data
+            ptr[1] = gRecordedBattleRngSeed.seed; // UB: overwrites berry data
+            ptr[2] = gRecordedBattleRngSeed.low;
+            ptr[3] = gRecordedBattleRngSeed.high;
             SendBlock(BitmaskAllOtherLinkPlayers(), ptr, sizeof(gBattleStruct->multiBuffer.battleVideo));
             gBattleCommunication[MULTIUSE_STATE]++;
         }
@@ -4294,7 +4296,7 @@ static void HandleTurnActionSelectionState(void)
                     else if (gBattleTypeFlags & BATTLE_TYPE_PALACE
                              && gChosenActionByBattler[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(gActiveBattler)))] == B_ACTION_USE_MOVE)
                     {
-                        gRngValue = gBattlePalaceMoveSelectionRngValue;
+                        gPCGRng = gBattlePalaceMoveSelectionRngValue;
                         RecordedBattle_ClearBattlerAction(GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(gActiveBattler))), 1);
                     }
                     else

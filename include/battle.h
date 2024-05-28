@@ -425,7 +425,7 @@ struct BattleStruct
     u16 castformPalette[NUM_CASTFORM_FORMS][16];
     union {
         struct LinkBattlerHeader linkBattlerHeader;
-        u32 battleVideo[2];
+        u32 battleVideo[4];
     } multiBuffer;
     u8 wishPerishSongState;
     u8 wishPerishSongBattlerId;
@@ -433,7 +433,7 @@ struct BattleStruct
     u8 atkCancellerTracker;
     struct BattleTvMovePoints tvMovePoints;
     struct BattleTv tv;
-    u8 unused_7[0x28];
+    u8 unused_7[0x20];
     u8 AI_monToSwitchIntoId[MAX_BATTLERS_COUNT];
     s8 arenaMindPoints[2];
     s8 arenaSkillPoints[2];

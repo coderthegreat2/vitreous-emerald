@@ -182,7 +182,7 @@ void Task_LinkContest_CommunicateRngRS(u8 taskId)
     case 0:
         if (GetMultiplayerId() == 0)
         {
-            if (IsLinkTaskFinished() && LinkContest_SendBlock(&gRngValue, sizeof(gRngValue)) == TRUE)
+            if (IsLinkTaskFinished() && LinkContest_SendBlock(&gPCGRng, sizeof(gPCGRng)) == TRUE)
                 gTasks[taskId].tState++;
         }
         else
@@ -193,7 +193,7 @@ void Task_LinkContest_CommunicateRngRS(u8 taskId)
     case 1:
         if (LinkContest_GetBlockReceived(0))
         {
-            memcpy(&gRngValue, gBlockRecvBuffer[0], sizeof(gRngValue));
+            memcpy(&gPCGRng, gBlockRecvBuffer[0], sizeof(gPCGRng));
             memcpy(&gContestRngValue, gBlockRecvBuffer[0], sizeof(gContestRngValue));
             gTasks[taskId].tState++;
         }

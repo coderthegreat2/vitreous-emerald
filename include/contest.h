@@ -2,6 +2,7 @@
 #define GUARD_CONTEST_H
 
 #include "palette.h"
+#include "random.h"
 #include "constants/contest.h"
 
 enum
@@ -327,7 +328,7 @@ extern struct ContestResources *gContestResources;
 extern struct ContestWinner gCurContestWinner;
 extern u8 gCurContestWinnerIsForArtist;
 extern u8 gCurContestWinnerSaveIdx;
-extern u32 gContestRngValue;
+extern struct PCG32 gContestRngValue;
 
 // contest.c
 void ResetLinkContestBoolean(void);

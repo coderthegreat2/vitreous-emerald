@@ -5,29 +5,31 @@ EWRAM_DATA static u8 sUnknown = 0;
 EWRAM_DATA static u32 sRandCount = 0;
 
 // IWRAM common
-u32 gRngValue;
-u32 gRng2Value;
+struct PCG32 gPCGRng;
+struct PCG32 gPCGRng2;
 
 u16 Random(void)
 {
-    gRngValue = ISO_RANDOMIZE1(gRngValue);
     sRandCount++;
-    return gRngValue >> 16;
+    return Random16(&gPCGRng);
 }
 
-void SeedRng(u16 seed)
+void SeedRng(u32 seed)
 {
-    gRngValue = seed;
+    gPCGRng.seed = seed;
+    gPCGRng.low = seed;
+    gPCGRng.high = seed;
     sUnknown = 0;
 }
 
-void SeedRng2(u16 seed)
+void SeedRng2(u32 seed)
 {
-    gRng2Value = seed;
+    gPCGRng2.seed = seed;
+    gPCGRng2.low = seed;
+    gPCGRng2.high = seed;
 }
 
 u16 Random2(void)
 {
-    gRng2Value = ISO_RANDOMIZE1(gRng2Value);
-    return gRng2Value >> 16;
+    return Random16(&gPCGRng2);
 }
