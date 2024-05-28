@@ -160,6 +160,15 @@ const u8 gItemEffect_SacredAsh[7] = {
     [6] = ITEM6_HEAL_HP_FULL,
 };
 
+//Start Pokevial Branch
+const u8 gItemEffect_Pokevial[7] = {
+    [0] = ITEM0_POKEVIAL,
+    [3] = ITEM3_STATUS_ALL,
+    [4] = ITEM4_REVIVE | ITEM4_HEAL_HP | ITEM4_HEAL_PP,
+    [6] = ITEM6_HEAL_HP_FULL | ITEM6_HEAL_PP_FULL,
+};
+//End Pokevial Branch
+
 #define VITAMIN_FRIENDSHIP_CHANGE(i)             \
     [(i) + 0] = 5, /* Friendship change, low */  \
     [(i) + 1] = 3, /* Friendship change, mid */  \
@@ -483,5 +492,6 @@ const u8 *const gItemEffectTable[] =
     [ITEM_UP_GRADE - ITEM_POTION]      = gItemEffect_UpGrade,
     [ITEM_DEEP_SEA_SCALE - ITEM_POTION]  = gItemEffect_DeepSeaScale,
     [ITEM_DEEP_SEA_TOOTH - ITEM_POTION]  = gItemEffect_DeepSeaTooth,
+    [ITEM_POKEVIAL - ITEM_POTION]      = gItemEffect_Pokevial, //Pokevial Branch
     [LAST_BERRY_INDEX - ITEM_POTION]   = NULL
 };

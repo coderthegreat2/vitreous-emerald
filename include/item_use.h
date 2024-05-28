@@ -67,5 +67,6 @@ void ItemUseOutOfBattle_SweetScentTool(u8);
 void ItemUseOnFieldCB_SweetScentTool(u8);
 
 // End qol_field_moves
+void ItemUseOutOfBattle_Pokevial(u8); //Pokevial Branch
 
 #endif // GUARD_ITEM_USE_H

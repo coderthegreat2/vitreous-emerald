@@ -3046,4 +3046,10 @@ extern const u8 gText_TMCase_Blue[];
 extern const u8 gText_ExpShareOn[];
 extern const u8 gText_ExpShareOff[];
 
+//Start Pokevial Branch
+extern const u8 gText_PokevialHasDoses[];
+extern const u8 gText_PokevialIsEmpty[];
+extern const u8 gText_YourPkmnWereRestored[];
+//End Pokevial Branch
+
 #endif // GUARD_STRINGS_H
