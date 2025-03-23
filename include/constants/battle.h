@@ -539,12 +539,6 @@ enum MoveEffects
 #define B_WIN_VS_OUTCOME_LEFT    22
 #define B_WIN_VS_OUTCOME_RIGHT   23
 #define B_WIN_MOVE_DESCRIPTION   24
-#define B_WIN_MOVE_PWR           25
-#define B_WIN_MOVE_PWR_POS       26
-#define B_WIN_MOVE_PWR_NEG       27
-#define B_WIN_MOVE_ACC           28
-#define B_WIN_MOVE_ACC_POS       29
-#define B_WIN_MOVE_ACC_NEG       30
 
 // The following are duplicate id values for windows that Battle Arena uses differently.
 #define ARENA_WIN_PLAYER_NAME      15
