@@ -825,3 +825,25 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CaveAlt =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_CaveAlt,
+    .palettes = gTilesetPalettes_CaveAlt,
+    .metatiles = gMetatiles_CaveAlt,
+    .metatileAttributes = gMetatileAttributes_CaveAlt,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CaveAltSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CaveAltSecondary,
+    .palettes = gTilesetPalettes_CaveAltSecondary,
+    .metatiles = gMetatiles_CaveAltSecondary,
+    .metatileAttributes = gMetatileAttributes_CaveAltSecondary,
+    .callback = NULL,
+};
