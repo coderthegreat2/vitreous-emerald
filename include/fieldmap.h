@@ -11,7 +11,7 @@
 
 #define MAX_ELEVATION_LEVEL 7 // Old Was 15
 
-#define NUM_TILES_PER_METATILE 8
+#define NUM_TILES_PER_METATILE 12
 
 // Map coordinates are offset by 7 when using the map
 // buffer because it needs to load sufficient border

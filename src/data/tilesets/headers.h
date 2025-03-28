@@ -836,3 +836,14 @@ const struct Tileset gTileset_CaveAlt =
     .metatileAttributes = gMetatileAttributes_CaveAlt,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CaveAltSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CaveAltSecondary,
+    .palettes = gTilesetPalettes_CaveAltSecondary,
+    .metatiles = gMetatiles_CaveAltSecondary,
+    .metatileAttributes = gMetatileAttributes_CaveAltSecondary,
+    .callback = NULL,
+};

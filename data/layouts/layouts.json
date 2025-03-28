@@ -4417,7 +4417,7 @@
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_CaveAlt",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_CaveAltSecondary",
       "border_filepath": "data/layouts/NewMap1/border.bin",
       "blockdata_filepath": "data/layouts/NewMap1/map.bin"
     }

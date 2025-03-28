@@ -210,3 +210,6 @@ const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/
 
 const u16 gMetatiles_CaveAlt[] = INCBIN_U16("data/tilesets/primary/cave_alt/metatiles.bin");
 const u16 gMetatileAttributes_CaveAlt[] = INCBIN_U16("data/tilesets/primary/cave_alt/metatile_attributes.bin");
+
+const u16 gMetatiles_CaveAltSecondary[] = INCBIN_U16("data/tilesets/secondary/cave_alt_secondary/metatiles.bin");
+const u16 gMetatileAttributes_CaveAltSecondary[] = INCBIN_U16("data/tilesets/secondary/cave_alt_secondary/metatile_attributes.bin");
