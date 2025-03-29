@@ -1313,5 +1313,14 @@ static const struct FormChange sTerapagosFormChangeTable[] = {
 };
 #endif //P_FAMILY_TERAPAGOS
 
+#if P_FAMILY_TURTWIG
+static const struct FormChange sTorterraFormChangeTable[] = {
+#if P_MEGA_EVOLUTIONS
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_TORTERRA_MEGA, ITEM_MEWTWONITE_X},
+#endif
+    {FORM_CHANGE_TERMINATOR},
+};
+#endif //P_FAMILY_TURTWIG
+
 #undef WHEN_LEARNED
 #undef WHEN_FORGOTTEN
