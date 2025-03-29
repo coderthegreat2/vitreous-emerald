@@ -138,6 +138,10 @@ static const u8 sGenericMulchDesc[]   = _("A fertilizer that\n"
                                           "is unsuitable for\n"
                                           "local soil.");
 
+static const u8 sTorterriteDesc[]     = _("This stone enables\n"
+                                          "Torterra to Mega\n"
+                                          "Evolve in battle.");
+
 const struct Item gItemsInfo[] =
 {
     [ITEM_NONE] =
@@ -14092,5 +14096,20 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
+    },
+    // CUSTOM MEGA STONES
+    [ITEM_TORTERRITE] =
+    {
+        .name = _("Torterrite"),
+        .pluralName = _("Torterrites"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sTorterriteDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Venusaurite,
+        .iconPalette = gItemIconPalette_Venusaurite,
     },
 };

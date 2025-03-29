@@ -1316,7 +1316,7 @@ static const struct FormChange sTerapagosFormChangeTable[] = {
 #if P_FAMILY_TURTWIG
 static const struct FormChange sTorterraFormChangeTable[] = {
 #if P_MEGA_EVOLUTIONS
-    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_TORTERRA_MEGA, ITEM_MEWTWONITE_X},
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_TORTERRA_MEGA, ITEM_TORTERRITE},
 #endif
     {FORM_CHANGE_TERMINATOR},
 };
