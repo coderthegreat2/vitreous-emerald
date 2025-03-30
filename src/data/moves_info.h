@@ -21005,6 +21005,36 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .sheerForceBoost = SHEER_FORCE_BOOST,
         }),
         .battleAnimScript = gBattleAnimMove_MalignantChain,
+        },
+
+    //Custom Attacks
+    [MOVE_MEGATON_PRESS] =
+    {
+        .name = COMPOUND_STRING("Megaton Press"),
+        .description = COMPOUND_STRING(
+            "Does more damage the\n"
+            "higher the user's Def."),
+        .effect = EFFECT_BODY_PRESS,
+        .power = 80,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .metronomeBanned = TRUE,
+        .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_DEF_PLUS_1,
+            .chance = 30,
+            .sheerForceBoost = SHEER_FORCE_BOOST,
+        }),
+        .battleAnimScript = gBattleAnimMove_BodyPress,
     },
 
     // Z-Moves

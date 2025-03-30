@@ -550,6 +550,7 @@ static inline bool32 IsMoveSheerForceBoosted(u32 move)
         case MOVE_LUSTER_PURGE:
         case MOVE_MAGICAL_TORQUE:
         case MOVE_MALIGNANT_CHAIN:
+        case MOVE_MEGATON_PRESS:
         case MOVE_MATCHA_GOTCHA:
         case MOVE_METEOR_MASH:
         case MOVE_MIRROR_SHOT:
