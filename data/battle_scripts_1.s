@@ -7075,7 +7075,7 @@ BattleScript_AnticipationActivates::
 
 BattleScript_AftermathDmg::
 	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUpScripting
+	call BattleScript_AbilityPopUp
 	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_AftermathDmgRet
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
@@ -7557,37 +7557,35 @@ BattleScript_MoodyEnd:
 	end3
 
 BattleScript_EmergencyExit::
-	.if B_ABILITY_POP_UP == TRUE
 	pause 5
-	call BattleScript_AbilityPopUpScripting
+	call BattleScript_AbilityPopUp
 	pause B_WAIT_TIME_LONG
-	.endif
-	playanimation BS_SCRIPTING, B_ANIM_SLIDE_OFFSCREEN
+BattleScript_EmergencyExitNoPopUp::
+	playanimation BS_TARGET, B_ANIM_SLIDE_OFFSCREEN
 	waitanimation
-	openpartyscreen BS_SCRIPTING, BattleScript_EmergencyExitRet
-	switchoutabilities BS_SCRIPTING
+	openpartyscreen BS_TARGET, BattleScript_EmergencyExitRet
+	switchoutabilities BS_TARGET
 	waitstate
-	switchhandleorder BS_SCRIPTING, 2
+	switchhandleorder BS_TARGET, 2
 	returntoball BS_TARGET, FALSE
-	getswitchedmondata BS_SCRIPTING
-	switchindataupdate BS_SCRIPTING
-	hpthresholds BS_SCRIPTING
+	getswitchedmondata BS_TARGET
+	switchindataupdate BS_TARGET
+	hpthresholds BS_TARGET
 	printstring STRINGID_SWITCHINMON
-	switchinanim BS_SCRIPTING, FALSE, TRUE
+	switchinanim BS_TARGET, FALSE, TRUE
 	waitstate
-	switchineffects BS_SCRIPTING
+	switchineffects BS_TARGET
 BattleScript_EmergencyExitRet:
 	return
 
 BattleScript_EmergencyExitWild::
-	.if B_ABILITY_POP_UP == TRUE
 	pause 5
-	call BattleScript_AbilityPopUpScripting
+	call BattleScript_AbilityPopUp
 	pause B_WAIT_TIME_LONG
-	.endif
-	playanimation BS_SCRIPTING, B_ANIM_SLIDE_OFFSCREEN
+BattleScript_EmergencyExitWildNoPopUp::
+	playanimation BS_TARGET, B_ANIM_SLIDE_OFFSCREEN
 	waitanimation
-	setoutcomeonteleport BS_SCRIPTING
+	setoutcomeonteleport BS_TARGET
 	finishaction
 	return
 
