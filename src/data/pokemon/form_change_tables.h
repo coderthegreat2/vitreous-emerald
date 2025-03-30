@@ -1331,5 +1331,15 @@ static const struct FormChange sInfernapeFormChangeTable[] = {
 };
 #endif //P_FAMILY_CHIMCHAR
 
+#if P_FAMILY_PIPLUP
+static const struct FormChange sEmpoleonFormChangeTable[] = {
+#if P_MEGA_EVOLUTIONS
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_EMPOLEON_MEGA_X, ITEM_EMPOLEONITE_X},
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_EMPOLEON_MEGA_Y, ITEM_EMPOLEONITE_Y},
+#endif
+    {FORM_CHANGE_TERMINATOR},
+};
+#endif //P_FAMILY_PIPLUP
+
 #undef WHEN_LEARNED
 #undef WHEN_FORGOTTEN

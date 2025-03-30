@@ -14151,6 +14151,15 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gShinyOverworldPalette_Empoleon[] = INCBIN_U32("graphics/pokemon/empoleon/overworld_shiny.gbapal.lz");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_EmpoleonMegaX[] = INCBIN_U32("graphics/pokemon/empoleon/mega_x/anim_front.4bpp.lz");
+    const u32 gMonPalette_EmpoleonMegaX[] = INCBIN_U32("graphics/pokemon/empoleon/mega_x/normal.gbapal.lz");
+    const u32 gMonBackPic_EmpoleonMegaX[] = INCBIN_U32("graphics/pokemon/empoleon/mega_x/back.4bpp.lz");
+    const u32 gMonShinyPalette_EmpoleonMegaX[] = INCBIN_U32("graphics/pokemon/empoleon/mega_x/shiny.gbapal.lz");
+    const u32 gMonFrontPic_EmpoleonMegaY[] = INCBIN_U32("graphics/pokemon/empoleon/mega_y/anim_front.4bpp.lz");
+    const u32 gMonPalette_EmpoleonMegaY[] = INCBIN_U32("graphics/pokemon/empoleon/mega_y/normal.gbapal.lz");
+    const u32 gMonBackPic_EmpoleonMegaY[] = INCBIN_U32("graphics/pokemon/empoleon/mega_y/back.4bpp.lz");
+    const u32 gMonShinyPalette_EmpoleonMegaY[] = INCBIN_U32("graphics/pokemon/empoleon/mega_y/shiny.gbapal.lz");
 #endif //P_FAMILY_PIPLUP
 
 #if P_FAMILY_STARLY

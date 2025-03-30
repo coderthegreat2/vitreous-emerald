@@ -2215,3 +2215,14 @@ static const u16 sInfernapeFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_CHIMCHAR
+
+#if P_FAMILY_PIPLUP
+static const u16 sEmpoleonFormSpeciesIdTable[] = {
+    SPECIES_EMPOLEON,
+#if P_MEGA_EVOLUTIONS
+    SPECIES_EMPOLEON_MEGA_X,
+    SPECIES_EMPOLEON_MEGA_Y,
+#endif
+    FORM_SPECIES_END,
+};
+#endif //P_FAMILY_PIPLUP

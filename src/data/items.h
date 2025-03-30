@@ -145,6 +145,12 @@ static const u8 sTorterriteDesc[]     = _("This stone enables\n"
 static const u8 sInferniteDesc[]     = _("This stone enables\n"
                                           "Infernape to Mega\n"
                                           "Evolve in battle.");
+
+static const u8 sEmpoleoniteDesc[]     = _("This stone enables\n"
+                                          "Empoleon to Mega\n"
+                                          "Evolve in battle.");
+
+
 const struct Item gItemsInfo[] =
 {
     [ITEM_NONE] =
@@ -14129,5 +14135,35 @@ const struct Item gItemsInfo[] =
         .flingPower = 80,
         .iconPic = gItemIcon_Blazikenite,
         .iconPalette = gItemIconPalette_Blazikenite,
+    },
+
+    [ITEM_EMPOLEONITE_X] =
+    {
+        .name = _("Empoleonite X"),
+        .pluralName = _("Empoleonites X"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sEmpoleoniteDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Abomasite,
+        .iconPalette = gItemIconPalette_Abomasite,
+    },
+    
+    [ITEM_EMPOLEONITE_Y] =
+    {
+        .name = _("Empoleonite Y"),
+        .pluralName = _("Empoleonites Y"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sEmpoleoniteDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Steelixite,
+        .iconPalette = gItemIconPalette_Steelixite,
     },
 };

@@ -1639,8 +1639,10 @@
 #define SPECIES_MIMIKYU_TOTEM_BUSTED                    SPECIES_MIMIKYU_BUSTED_TOTEM
 #define SPECIES_TORTERRA_MEGA                           1524
 #define SPECIES_INFERNAPE_MEGA                          1525
+#define SPECIES_EMPOLEON_MEGA_X                         1526
+#define SPECIES_EMPOLEON_MEGA_Y                         1527
 
-#define SPECIES_EGG                                     (SPECIES_INFERNAPE_MEGA + 1)
+#define SPECIES_EGG                                     (SPECIES_EMPOLEON_MEGA_Y + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 
