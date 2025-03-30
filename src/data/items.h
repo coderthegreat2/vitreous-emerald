@@ -142,6 +142,9 @@ static const u8 sTorterriteDesc[]     = _("This stone enables\n"
                                           "Torterra to Mega\n"
                                           "Evolve in battle.");
 
+static const u8 sInferniteDesc[]     = _("This stone enables\n"
+                                          "Infernape to Mega\n"
+                                          "Evolve in battle.");
 const struct Item gItemsInfo[] =
 {
     [ITEM_NONE] =
@@ -14111,5 +14114,20 @@ const struct Item gItemsInfo[] =
         .flingPower = 80,
         .iconPic = gItemIcon_Venusaurite,
         .iconPalette = gItemIconPalette_Venusaurite,
+    },
+
+    [ITEM_INFERNITE] =
+    {
+        .name = _("Infernite"),
+        .pluralName = _("Infernites"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sInferniteDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Blazikenite,
+        .iconPalette = gItemIconPalette_Blazikenite,
     },
 };

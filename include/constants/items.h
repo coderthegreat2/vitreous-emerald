@@ -996,11 +996,12 @@
 
 // Custom Mega Stones.
 #define ITEM_TORTERRITE 829
+#define ITEM_INFERNITE 830
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 830
+#define ITEMS_COUNT 831
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 
