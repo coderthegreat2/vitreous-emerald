@@ -548,6 +548,7 @@
 
 //Custom Music
 #define MUS_VIOLET_CITY             610
+#define MUS_SONATINE_1              611
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
