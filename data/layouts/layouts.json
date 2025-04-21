@@ -4420,16 +4420,6 @@
       "secondary_tileset": "gTileset_CaveAltSecondary",
       "border_filepath": "data/layouts/NewMap1/border.bin",
       "blockdata_filepath": "data/layouts/NewMap1/map.bin"
-    },
-    {
-      "id": "LAYOUT_TWINLEAF_TOWN",
-      "name": "TwinleafTown_Layout",
-      "width": 25,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/TwinleafTown/border.bin",
-      "blockdata_filepath": "data/layouts/TwinleafTown/map.bin"
     }
   ]
 }

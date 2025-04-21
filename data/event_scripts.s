@@ -1156,5 +1156,3 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/dexnav.inc"
 
 	.include "data/maps/NewMap1/scripts.inc"
-
-	.include "data/maps/TwinleafTown/scripts.inc"
